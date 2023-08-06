@@ -27,3 +27,4 @@ for _ in range(10):
 print(f'10 самых часто встречающихся слов: ')
 for key, value in frequent_words.items():
     print(f'Слово "{key}" - частота повторений - {value}')
+
