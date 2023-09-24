@@ -1,13 +1,20 @@
 import time
 import numpy as np
+from exceptions import NegativeValueException, CharsException
 
 
 class MyString(str):
     """ Class MyString extends class str"""
 
     def __init__(self, author_name, string):
-        self.name = author_name
-        self.string = string
+        if isinstance(author_name, str):
+            self.name = author_name
+        else:
+            raise CharsException
+        if isinstance(string, str):
+            self.string = string
+        else:
+            raise CharsException
 
     def __new__(cls, author_name, string):
         instance = super().__new__(cls)
@@ -50,7 +57,10 @@ class Rectangle:
     """Class creates a rectangle and has parameters length and width"""
 
     def __init__(self, length, width=None):
-        self.length = length
+        if length < 0:
+            raise NegativeValueException()
+        else:
+            self.length = length
         if width is None:
             self.width = length
         else:
@@ -103,7 +113,7 @@ class Rectangle:
         return self.area_calculation() >= other.area_calculation()
 
 
-rect1 = Rectangle(3, 3)
+rect1 = Rectangle(-1, 3)
 rect2 = Rectangle(3, 9)
 
 
@@ -124,6 +134,3 @@ class Matrix:
 
     def __lt__(self, other):
         return self.matrix < other.matrix
-
-
-print(help(Rectangle))

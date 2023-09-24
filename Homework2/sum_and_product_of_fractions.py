@@ -25,3 +25,6 @@ def sum_and_mult():
     mult_numer = saved_numer_a * saved_numer_b
     mult_denom = a_denominator * b_denominator
     print(fractions.Fraction(mult_numer, mult_denom))
+
+
+sum_and_mult()
